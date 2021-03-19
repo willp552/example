@@ -1,0 +1,51 @@
+package:
+  name: example
+  version: 0.1.0
+
+source:
+  path: ../
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - cmake>=3.1
+    - conda-forge::xtl
+    - conda-forge::xtensor
+    - python>=3.6
+    - numpy>=1.16
+    - conda-forge::pybind11
+    - conda-forge::xtensor-python
+    
+  run:
+    - numpy>=1.16
+    - python>=3.6
+    
+test:
+  requires:
+    - pytest
+  imports:
+    - example
+  
+  commands:
+    - test -d ${PREFIX}/include/example           # [unix]
+    - test -f ${PREFIX}/include/example/example.hpp # [unix]
+    - if exist %LIBRARY_PREFIX%\include\example\example.hpp (exit 0) else (exit 1)  # [win]
+    # - make cpp-test
+    # -  make python-test
+
+about:
+  home:  https://github.com/willp552/example
+  license: MIT
+  license_family: MIT
+  
+  summary: 'example is a modern C++ library'
+  description: 'example is a modern C++ library'
+  documentation_url: https://readthedocs.org/projects/example/
+  dev_url: https://github.com/willp552/example
+
+extra:
+  recipe-maintainers:
+    - William Price
+

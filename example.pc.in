@@ -1,0 +1,8 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/include
+
+Name: example
+Description: example is a modern C++ library
+Version: @example_VERSION@
+Cflags: -I${includedir}
